@@ -1,0 +1,3 @@
+[submodule "app/Plugin/GoogleAuthenticate"]
+	path = app/Plugin/GoogleAuthenticate
+	url = git://github.com/ceeram/GoogleAuthenticate.git
