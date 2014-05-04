@@ -29,6 +29,7 @@ $siteDesc = "My bin .::. Cloud based file storage.";
 	<?php
 		echo $this->Html->meta('icon');
 
+		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css');
 		echo $this->Html->css('jumbotron-narrow.css');
 		echo $this->Html->css('general');
@@ -47,8 +48,7 @@ $siteDesc = "My bin .::. Cloud based file storage.";
 			<h2 class="text-muted">My Bin</h2>
 		</div>
 		<div id="content">
-			<?php echo $this->Session->flash(); ?>
-
+			<?=$this->Session->flash()?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer" class="footer">

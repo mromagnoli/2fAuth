@@ -20,7 +20,7 @@ class UsersController extends AppController {
 		if ($this->Auth->login()) {
 			return $this->redirect($this->Auth->redirectUrl());
 		}
-		$this->Session->setFlash(__('Invalid username or password, try again'));
+		$this->Session->setFlash(__('Invalid username or password, try again'), 'default', array('class' => 'alert alert-danger'));
 	}
 }
 
@@ -28,7 +28,7 @@ class UsersController extends AppController {
  *
  */
 	public function logout() {
-		$this->Session->setFlash('Thanks, come again.');
+		$this->Session->setFlash('Thanks, come again.', 'default', array('class' => 'alert alert-info'));
 
 		return $this->redirect($this->Auth->logout());
 	}
@@ -68,30 +68,31 @@ class UsersController extends AppController {
 
 			if ($user) {
 				if ($this->User->Panel->save(array('Panel' => array('user_id' => $this->User->id)))) {
-					$this->User->saveField('wall_id', $this->User->Panel->id);
+					$this->User->saveField('panel_id', $this->User->Panel->id);
 				}
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-warning'));
 				return $this->redirect('/');
 			}
 
 			$this->Auth->login();
-			$this->Session->setFlash(__('The user has been saved.'));
+			$this->Session->setFlash(__('The user has been saved.'), 'default', array('class' => 'alert alert-success'));
 
-			//return $this->redirect(array('controller' => 'walls', 'action' => 'view', $this->User->Panel->id));
-			return $this->redirect(array('action' => 'secret'));
+			return $this->redirect(array('controller' => 'panels', 'action' => 'view', $this->User->Panel->id));
+			//return $this->redirect(array('action' => 'get_secret'));
 		}
 	}
 
 /**
  *
  */
-	public function secret($renew = null) {
+	public function get_secret($renew = null) {
 		$this->User->id = $this->Auth->user('id');
-		/*if ($this->request->is('post')) {
+		if ($this->request->is('post')) {
 			$this->User->saveField('secret', null);
-			$this->redirect(array('action' => 'view', $this->User->id));
-		}*/
+			$this->Session->setFlash('Secret removed.');
+			$this->redirect(array('controller' => 'panels', 'action' => 'view', $this->User->Panel->id));
+		}
 
 		App::uses('GoogleAuthenticator', 'GoogleAuthenticate.Lib');
 		$Google = new GoogleAuthenticator();
@@ -102,9 +103,11 @@ class UsersController extends AppController {
 			$this->User->saveField('secret', $secret);
 		}
 
-		$url = $Google->getUrl($secret, $this->Auth->user('username'));
+		$url = $Google->getUrl($secret, $this->Auth->user('username'), 'mybin.com');
 
-		$this->set(compact('secret', 'url'));
+		$user = $this->User->findById($this->User->id);
+		$user = $user['User'];
+		$this->set(compact('secret', 'url', 'user'));
 	}
 
 /**

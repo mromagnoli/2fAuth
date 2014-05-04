@@ -36,10 +36,10 @@ class User extends AppModel {
 			)
 		),
 		'code' => array(
-			'required' => array(
+			/*'required' => array(
 				'rule' => array('notEmpty'),
 				'message' => 'A code is required'
-			)
+			)*/
 		)
 	);
 

@@ -15,9 +15,9 @@
 			<?=$this->Form->input('password', array(
 				'div' => 'form-group'
 			))?>
-			<?//=$this->Form->input('code'), array(
-				//'div' => 'form-group'
-			//))?>
+			<?=$this->Form->input('code', array(
+				'div' => 'form-group'
+			))?>
 			<?=$this->Form->submit('Log in')?>
 			<?=$this->Form->end()?>
       </div>
