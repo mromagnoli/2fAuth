@@ -10,15 +10,18 @@
 				'role' => 'form'
 			))?>
 			<?=$this->Form->input('username', array(
-				'div' => 'form-group'
+				'div' => 'form-group',
+				'class' => 'form-control'
 			))?>
 			<?=$this->Form->input('password', array(
-				'div' => 'form-group'
+				'div' => 'form-group',
+				'class' => 'form-control'
 			))?>
 			<?=$this->Form->input('code', array(
-				'div' => 'form-group'
+				'div' => 'form-group',
+				'class' => 'form-control'
 			))?>
-			<?=$this->Form->submit('Log in')?>
+			<?=$this->Form->submit('Log in', array('class' => 'btn btn-success'))?>
 			<?=$this->Form->end()?>
       </div>
       <div class="modal-footer">

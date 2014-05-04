@@ -16,7 +16,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$siteDesc = "My bin .::. Cloud based file storage.";
+$siteDesc = "MyBin .::. Cloud based file storage.";
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@ $siteDesc = "My bin .::. Cloud based file storage.";
 <body>
 	<div id="container" class="container">
 		<div id="header" class="header">
-			<h2 class="text-muted">My Bin</h2>
+			<h2 class="text-muted">MyBin</h2>
 		</div>
 		<div id="content">
 			<?=$this->Session->flash()?>

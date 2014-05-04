@@ -90,7 +90,7 @@ class UsersController extends AppController {
 		$this->User->id = $this->Auth->user('id');
 		if ($this->request->is('post')) {
 			$this->User->saveField('secret', null);
-			$this->Session->setFlash('Secret removed.');
+			$this->Session->setFlash('Secret removed.', 'default', array('class' => 'alert alert-success'));
 			$this->redirect(array('controller' => 'panels', 'action' => 'view', $this->User->Panel->id));
 		}
 
