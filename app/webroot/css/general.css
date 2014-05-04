@@ -1,0 +1,9 @@
+body {
+}
+
+.sidebar {
+	width: 100px;
+	float: left;
+	margin-right: 20px;
+	height: 1000px;
+}

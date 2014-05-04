@@ -1,21 +1,10 @@
-<div>
-	<?=$this->Session->flash('auth')?>
-	<?=$this->Form->create('User')?>
-	<?=$this->Form->input('username')?>
-	<?=$this->Form->input('password')?>
-	<?//=$this->Form->input('code')?>
-	<?=$this->Form->submit('Log in')?>
-	<?=$this->Form->end()?>
+<div class="jumbotron">
+	<h1>My Bin</h1>
+	<p>Cloud based files storage, for ALL.</p>
+	<p><?=$this->Html->image('bin-logo.png')?></p>
+	<p><button class="btn btn-primary btn-large" data-toggle="modal" data-target="#registerModal">Sign up</button></p>
+	<p><button class="btn btn-small" data-toggle="modal" data-target="#loginModal">Login</button></p>
 </div>
-<div>
-Register
-<?=$this->Form->create('User', array(
-	'id' => 'UserAddForm',
-	'url' => array('controller' => 'users',	'action' => 'add')
-))?>
-	<?=$this->Form->input('name')?>
-	<?=$this->Form->input('username')?>
-	<?=$this->Form->input('mail')?>
-	<?=$this->Form->input('password')?>
-<?=$this->Form->end('Register')?>
-</div>
+<?=$this->Session->flash('auth')?>
+<?=$this->element('users/login')?>
+<?=$this->element('users/register')?>
