@@ -35,12 +35,8 @@ class User extends AppModel {
 				'message' => 'A name is required'
 			)
 		),
-		'code' => array(
-			/*'required' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'A code is required'
-			)*/
-		)
+		'code',
+		'last_code'
 	);
 
 	public function beforeSave($options = array()) {

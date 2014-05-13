@@ -16,13 +16,20 @@ class UsersController extends AppController {
  *
  */
 	public function login() {
-	if ($this->request->is('post')) {
-		if ($this->Auth->login()) {
+		if (AuthComponent::user()) {
 			return $this->redirect($this->Auth->redirectUrl());
 		}
-		$this->Session->setFlash(__('Invalid username or password, try again'), 'default', array('class' => 'alert alert-danger'));
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				if (!empty($this->request->data['User']['code'])) {
+					$this->User->id = AuthComponent::user('id');
+					$this->User->saveField('last_code', $this->request->data['User']['code']);
+				}
+				return $this->redirect($this->Auth->redirectUrl());
+			}
+			$this->Session->setFlash(__('Invalid username, password or code, try again'), 'default', array('class' => 'alert alert-danger'));
+		}
 	}
-}
 
 /**
  *
@@ -84,7 +91,7 @@ class UsersController extends AppController {
 	}
 
 /**
- *
+ * Generate secret for user
  */
 	public function get_secret($renew = null) {
 		$this->User->id = $this->Auth->user('id');

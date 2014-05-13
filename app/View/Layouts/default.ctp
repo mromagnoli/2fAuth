@@ -45,7 +45,13 @@ $siteDesc = "MyBin .::. Cloud based file storage.";
 <body>
 	<div id="container" class="container">
 		<div id="header" class="header">
-			<h2 class="text-muted">MyBin</h2>
+			<?=$this->Html->link(
+				'<h2 class="text-muted">MyBin</h2>',
+				'/',
+				array(
+					'escape' => false
+				)
+			)?>
 		</div>
 		<div id="content">
 			<?=$this->Session->flash()?>

@@ -15,13 +15,19 @@ if (empty($user)) {
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	<ul class="nav navbar-nav">
-		<li ><?=$this->Html->link(
+		<li><?=$this->Html->link(
 			'Get Secret',
 			array('controller' => 'users', 'action' => 'get_secret')
 		)?></li>
 		<li><?=$this->Html->link(
 			'Logout',
 			array('controller' => 'users', 'action' => 'logout')
+		)?></li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+		<li><?=$this->Html->link(
+			'Implementación de Código',
+			array('controller' => 'panels', 'action' => 'how_to')
 		)?></li>
 	</ul>
 	</div><!-- /.container-fluid -->
