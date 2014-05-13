@@ -58,6 +58,20 @@ $siteDesc = "MyBin .::. Cloud based file storage.";
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer" class="footer">
+			<div class="media">
+				<a class="pull-left" href="#">
+					<!-- <img class="media-object" src="" alt="..."> -->
+					<?=$this->Html->image('logotipo_um.jpg', array(
+						'class' => 'media-object'
+					))?>
+				</a>
+				<div class="media-body">
+					<h5 class="media-heading">Universidad de Mendoza | Facultad de Ingeniería</h5>
+					<b>Cátedra de Comunicaciones de Redes Seguras</b><br>
+					<i>Implementación de Autenticación de Doble Factor</i><br>
+					Marcelo Romagnoli. <i>leg. 5483</i>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
